@@ -62,7 +62,7 @@ class SafeZonePublisher(Node):
         # https://www.yobi3d.com/
         # https://www.yobi3d.com/v/tivZ0KYsrZ/Shark_t.stl
         # mesh is licensed under CC-BY
-        self.shark.mesh_resource = 'file:///Users/karsten/workspace/osrf/roscon2018_ws/src/roscon2018/confbot_description/meshes/Shark_t.stl'
+        self.shark.mesh_resource = 'file:///Users/karsten/workspace/osrf/roscon2018_ws/src/roscon2018/confbot_description/meshes/Shark_t.stl'  # noqa E501
 
     def timer_callback(self):
 

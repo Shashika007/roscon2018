@@ -26,8 +26,6 @@
 
 #include "geometry_msgs/msg/twist.hpp"
 
-using namespace std::chrono_literals;
-
 namespace confbot_driver
 {
 
@@ -51,7 +49,7 @@ public:
     custom_qos_profile.depth = 7;
     pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", custom_qos_profile);
 
-    timer_ = this->create_wall_timer(100ms, publish_message);
+    timer_ = this->create_wall_timer(std::chrono::milliseconds(100), publish_message);
   }
 
   void init()

@@ -35,8 +35,6 @@
 
 #define DEG2RAD M_PI / 180.0
 
-using namespace std::chrono_literals;
-
 namespace confbot_sensors
 {
 
@@ -67,7 +65,7 @@ public:
     msg_ = std::make_shared<sensor_msgs::msg::LaserScan>();
     pub_ = this->create_publisher<sensor_msgs::msg::LaserScan>("scan");
     timer_ = this->create_wall_timer(
-      10ms, std::bind(&ConfbotLaser::publish, this));
+      std::chrono::milliseconds(10), std::bind(&ConfbotLaser::publish, this));
 
     msg_->header.frame_id = "laser_link";
 

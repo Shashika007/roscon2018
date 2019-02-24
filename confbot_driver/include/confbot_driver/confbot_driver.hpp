@@ -27,8 +27,6 @@
 
 #include "tf2_ros/static_transform_broadcaster.h"
 
-using namespace std::chrono_literals;
-
 namespace confbot_driver
 {
 
@@ -72,7 +70,8 @@ public:
     msg_.child_frame_id = "base_link";
 
     tf_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(shared_from_this());
-    timer_ = this->create_wall_timer(100ms, std::bind(&ConfbotDriver::update_odometry, this));
+    timer_ = this->create_wall_timer(
+      std::chrono::milliseconds(100), std::bind(&ConfbotDriver::update_odometry, this));
 
     cmd_vel_subscriber_ = this->create_subscription<geometry_msgs::msg::Twist>(
       "cmd_vel", std::bind(&ConfbotDriver::update_position, this, std::placeholders::_1));
